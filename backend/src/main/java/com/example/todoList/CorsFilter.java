@@ -21,6 +21,7 @@ public class CorsFilter extends OncePerRequestFilter {
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "authorization, content-type, xsrf-token, ngrok-skip-browser-warning"); // Thêm ngrok-skip-browser-warning vào danh sách các headers được phép
 //        response.setHeader("Access-Control-Allow-Headers"."authorization, content-type, xsrf-token");
 //        response.setHeader("Access-Control-Expose-Headers", "sxrf-token");
         if ("OPTIONS".equals(request.getMethod())) {
