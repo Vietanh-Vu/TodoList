@@ -1,4 +1,4 @@
-package com.example.autocompleted.task;
+package com.example.todoList.task;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

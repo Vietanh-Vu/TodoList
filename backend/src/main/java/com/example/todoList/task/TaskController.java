@@ -1,4 +1,4 @@
-package com.example.autocompleted.task;
+package com.example.todoList.task;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-@CrossOrigin(origins = "https://vietanh-vu.github.io/TodoList/")
+//@CrossOrigin(origins = "https://vietanh-vu.github.io/TodoList/")
+@CrossOrigin("http://localhost:5173/")
 @RestController
 @RequestMapping("/api")
 public class TaskController {

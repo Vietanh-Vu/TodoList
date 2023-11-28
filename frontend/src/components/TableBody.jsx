@@ -6,6 +6,8 @@ export default function TableBody() {
   const { rows, searchedRows, isLoading } = useTask();
   const { page, rowsPerPage, emptyRows, renderTasks } = useTableTask();
 
+  console.log(rows);
+
   return (
     <tbody>
       {isLoading === true && (
@@ -15,13 +17,24 @@ export default function TableBody() {
           </td>
         </tr>
       )}
-      {searchedRows !== null
-        ? searchedRows
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row) => renderTasks(row))
-        : rows
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row) => renderTasks(row))}
+
+      {rows === null ? (
+        <tr>
+          <td colSpan={6} style={{ textAlign: "center" }}>
+            <span>Add Some Tasks</span>
+          </td>
+        </tr>
+      ) : searchedRows !== null ? (
+        searchedRows
+          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          .map((row) => renderTasks(row))
+      ) : (
+        rows
+          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          .map((row) => renderTasks(row))
+      )}
+
+      {}
       {emptyRows > 0 && (
         <tr
           style={{

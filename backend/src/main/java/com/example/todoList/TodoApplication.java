@@ -1,6 +1,6 @@
-package com.example.autocompleted;
+package com.example.todoList;
 
-import com.example.autocompleted.trie.Trie;
+import com.example.todoList.trie.Trie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

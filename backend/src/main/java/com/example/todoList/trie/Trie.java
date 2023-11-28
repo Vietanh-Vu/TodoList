@@ -1,10 +1,11 @@
-package com.example.autocompleted.trie;
+package com.example.todoList.trie;
 
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 @Service
 public class Trie {
     private TrieNode root;

@@ -1,4 +1,4 @@
-package com.example.autocompleted.trie;
+package com.example.todoList.trie;
 
 import java.util.HashMap;
 import java.util.Map;
