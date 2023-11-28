@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useState, useContext } from "react";
 
-const BASE_URL = "https://4e08-116-96-45-57.ngrok-free.app/api/task";
+const BASE_URL = "https://2af1-116-96-45-57.ngrok-free.app/api/task";
 
 // Set default headers for all axios requests
 axios.defaults.headers.common["ngrok-skip-browser-warning"] = "69420";
