@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useState, useContext } from "react";
 
-const BASE_URL = "http://localhost:8080/api/task";
+const BASE_URL = " https://5f05-116-96-45-57.ngrok-free.app/api/task";
 
 const TaskContext = createContext();
 function TaskProvider({ children }) {

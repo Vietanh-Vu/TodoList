@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { AutocompleteOption, ListItemContent } from "@mui/joy";
 
-const BASE_URL = "http://localhost:8080/api/trie";
+const BASE_URL = "https://5f05-116-96-45-57.ngrok-free.app/api/trie";
 
 export default function AutoInput(props) {
   const [value, setValue] = React.useState("");
