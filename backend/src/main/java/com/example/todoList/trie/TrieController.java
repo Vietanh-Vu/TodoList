@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 
-//@CrossOrigin(origins = "https://vietanh-vu.github.io/TodoList/")
-@CrossOrigin("http://localhost:5173/")
+@CrossOrigin(origins = "https://vietanh-vu.github.io/TodoList/")
+//@CrossOrigin("http://localhost:5173/")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
