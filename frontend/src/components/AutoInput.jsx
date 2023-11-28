@@ -4,6 +4,8 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { AutocompleteOption, ListItemContent } from "@mui/joy";
 
+const BASE_URL = "http://localhost:8080/api/trie";
+
 export default function AutoInput(props) {
   const [value, setValue] = React.useState("");
   const [suggestWords, setSuggestWords] = React.useState([]);
@@ -24,7 +26,7 @@ export default function AutoInput(props) {
 
     if (lastCharacter === " ") {
       axios
-        .post(`http://localhost:8080/api/trie/insert?word=${lastWord}`)
+        .post(`${BASE_URL}/insert?word=${lastWord}`)
         .then(function (res) {
           console.log(res.data);
         })
@@ -33,7 +35,7 @@ export default function AutoInput(props) {
         });
     } else {
       axios
-        .get(`http://localhost:8080/api/trie?prefix=${lastWord}`)
+        .get(`${BASE_URL}?prefix=${lastWord}`)
         .then(function (res) {
           const fullSentences = res.data.map(
             (word) => `${userInput.split(" ").slice(0, -1).join(" ")} ${word}`
@@ -59,7 +61,7 @@ export default function AutoInput(props) {
 
   React.useEffect(() => {
     axios
-      .post(`http://localhost:8080/api/trie/build?paragraph=${value}`)
+      .post(`${BASE_URL}/build?paragraph=${value}`)
       .then(function (res) {
         console.log(res.data);
       })
