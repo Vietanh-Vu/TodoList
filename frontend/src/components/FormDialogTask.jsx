@@ -1,5 +1,6 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
+import Button from "@mui/joy/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -13,8 +14,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function FormTaskDialog() {
-  const { openForm, handleCloseForm, addTask, deleteTask, action, updateTask } =
-    useTask();
+  const {
+    openForm,
+    handleCloseForm,
+    addTask,
+    deleteTask,
+    action,
+    updateTask,
+    isLoading,
+  } = useTask();
 
   return (
     <React.Fragment>
@@ -35,24 +43,27 @@ export default function FormTaskDialog() {
         <DialogActions>
           {action !== "Delete" ? (
             <>
-              <Button onClick={handleCloseForm} variant="contained">
-                Cancel
-              </Button>
-              <Button
-                onClick={action === "Add" ? addTask : updateTask}
-                variant="contained"
-              >
-                Submit
-              </Button>
+              <Button onClick={handleCloseForm}>Cancel</Button>
+              {isLoading ? (
+                <Button loading variant="solid">
+                  Solid
+                </Button>
+              ) : (
+                <Button onClick={action === "Add" ? addTask : updateTask}>
+                  Submit
+                </Button>
+              )}
             </>
           ) : (
             <>
-              <Button onClick={handleCloseForm} variant="contained">
-                Disagree
-              </Button>
-              <Button onClick={deleteTask} variant="contained">
-                Agree
-              </Button>
+              <Button onClick={handleCloseForm}>Disagree</Button>
+              {isLoading ? (
+                <Button loading variant="solid">
+                  Solid
+                </Button>
+              ) : (
+                <Button onClick={deleteTask}>Agree</Button>
+              )}
             </>
           )}
         </DialogActions>

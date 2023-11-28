@@ -6,22 +6,12 @@ const BASE_URL = "http://localhost:8080/api/task";
 const TaskContext = createContext();
 function TaskProvider({ children }) {
   const [openForm, setOpenForm] = useState(false);
-  const [openAlertDialog, setOpenAlertDialog] = useState(false);
   const [data, setData] = useState([]);
   const [curRowData, setCurRowData] = useState(null);
   const [action, setAction] = useState("None");
   const [rows, setRows] = React.useState([]);
   const [searchedRows, setSearchedRows] = useState(null);
-
-  function handleOpenAlertDialog(currentRow) {
-    setCurRowData(currentRow);
-    setAction("Delete");
-    setOpenAlertDialog(true);
-  }
-
-  function handleCloseAlertDialog() {
-    setOpenAlertDialog(false);
-  }
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleCloseForm() {
     setOpenForm(false);
@@ -38,6 +28,7 @@ function TaskProvider({ children }) {
 
   async function addTask() {
     console.log(curRowData);
+    setIsLoading(true);
     const dataPost = {
       name: curRowData.name,
       priority: curRowData.priority,
@@ -48,19 +39,24 @@ function TaskProvider({ children }) {
     try {
       const response = await axios.post(BASE_URL, dataPost);
       alert(response.data);
+      setIsLoading(false);
       setOpenForm(false);
     } catch (error) {
       alert("Error adding task:", error);
+      setIsLoading(false);
     }
   }
 
   async function updateTask() {
+    setIsLoading(true);
     try {
       const response = await axios.put(BASE_URL, curRowData);
       alert(response.data);
+      setIsLoading(false);
       setOpenForm(false);
     } catch (error) {
       alert("Error adding task:", error);
+      setIsLoading(false);
     }
   }
 
@@ -75,27 +71,34 @@ function TaskProvider({ children }) {
     // };
 
     // console.log(dataDelete);
+    setIsLoading(true);
+
     try {
       const response = await axios.delete(`${BASE_URL}`, {
         data: curRowData,
       });
+      setIsLoading(false);
+      setOpenForm(false);
       alert(response.data);
-      setOpenAlertDialog(false);
     } catch (error) {
       alert("Error delete task:", error);
+      setIsLoading(false);
     }
   }
 
   React.useEffect(() => {
+    setIsLoading(true);
     axios
       .get(BASE_URL)
       .then((response) => {
         // Xử lý dữ liệu trả về từ API
         setData(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         // Xử lý lỗi nếu có
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
 
     return () => {};
@@ -108,9 +111,9 @@ function TaskProvider({ children }) {
         action,
         data,
         curRowData,
-        openAlertDialog,
         rows,
         searchedRows,
+        isLoading,
         setSearchedRows,
         setRows,
         addTask,
@@ -120,8 +123,6 @@ function TaskProvider({ children }) {
         handleAction,
         handleCloseForm,
         handleOpenForm,
-        handleOpenAlertDialog,
-        handleCloseAlertDialog,
       }}
     >
       {children}
