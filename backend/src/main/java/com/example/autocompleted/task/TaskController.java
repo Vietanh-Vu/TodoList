@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173/")
+@CrossOrigin(origins = "https://vietanh-vu.github.io/TodoList/")
 @RestController
 @RequestMapping("/api")
 public class TaskController {

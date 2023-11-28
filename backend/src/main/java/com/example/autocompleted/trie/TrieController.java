@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173/")
+@CrossOrigin(origins = "https://vietanh-vu.github.io/TodoList/")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
 public class TrieController {
     private final Trie trie;
+
     @GetMapping("/trie")
     public ResponseEntity<?> getWord(@RequestParam String prefix) {
         List<String> res = trie.autoComplete(prefix.toLowerCase());
