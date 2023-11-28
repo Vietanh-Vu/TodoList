@@ -20,17 +20,17 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        working-directory: frontend  # Thiết lập thư mục làm việc cho bước này
+        working-directory: frontend  
         run: npm install
 
       - name: Build project
-        working-directory: frontend  # Thiết lập thư mục làm việc cho bước này
+        working-directory: frontend  # set working-directory
         run: npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
         with:
-          name: frontend-production-files  # Đặt tên cho artifact của frontend
+          name: frontend-production-files  # rename artifact for frontend
           path: frontend/dist
 
   deploy:
@@ -43,12 +43,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
-          name: frontend-production-files  # Sử dụng tên artifact đã đặt trong bước build
+          name: frontend-production-files  # use artifact in build step 
           path: frontend/dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: frontend/dist  # Sử dụng đúng đường dẫn của frontend
+          publish_dir: frontend/dist  # url frontend
 
