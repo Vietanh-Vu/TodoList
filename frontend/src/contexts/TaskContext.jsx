@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { createContext, useState, useContext } from "react";
 
-const BASE_URL = "https://2af1-116-96-45-57.ngrok-free.app/api/task";
+const BASE_URL = "https://174f-118-70-156-49.ngrok-free.app/api/task";
+// const BASE_URL = "http://localhost:8080/api/task";
 
 // Set default headers for all axios requests
 axios.defaults.headers.common["ngrok-skip-browser-warning"] = "69420";
@@ -29,6 +30,28 @@ function TaskProvider({ children }) {
     setAction(inputAction);
   }
 
+  function fetchData() {
+    setIsLoading(true);
+    axios
+      .get(BASE_URL)
+      .then((response) => {
+        // Xử lý dữ liệu trả về từ API
+        setData(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        // Xử lý lỗi nếu có
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      });
+  }
+
+  React.useEffect(() => {
+    fetchData();
+
+    return () => {};
+  }, []);
+
   async function addTask() {
     console.log(curRowData);
     setIsLoading(true);
@@ -44,6 +67,7 @@ function TaskProvider({ children }) {
       alert(response.data);
       setIsLoading(false);
       setOpenForm(false);
+      fetchData();
     } catch (error) {
       alert("Error adding task:", error);
       setIsLoading(false);
@@ -57,6 +81,7 @@ function TaskProvider({ children }) {
       alert(response.data);
       setIsLoading(false);
       setOpenForm(false);
+      fetchData();
     } catch (error) {
       alert("Error adding task:", error);
       setIsLoading(false);
@@ -80,32 +105,15 @@ function TaskProvider({ children }) {
       const response = await axios.delete(`${BASE_URL}`, {
         data: curRowData,
       });
+      alert(response.data);
       setIsLoading(false);
       setOpenForm(false);
-      alert(response.data);
+      fetchData();
     } catch (error) {
       alert("Error delete task:", error);
       setIsLoading(false);
     }
   }
-
-  React.useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(BASE_URL)
-      .then((response) => {
-        // Xử lý dữ liệu trả về từ API
-        setData(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        // Xử lý lỗi nếu có
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      });
-
-    return () => {};
-  }, []);
 
   return (
     <TaskContext.Provider

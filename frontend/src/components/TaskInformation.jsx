@@ -58,7 +58,6 @@ export default function TaskInformation() {
         <Grid xs={6}>
           <Autocomplete
             placeholder="Priority"
-            freeSolo
             value={priority}
             onChange={(e, newValue) => setPriority(newValue)}
             options={[1, 2, 3, 4, 5]}
@@ -78,7 +77,6 @@ export default function TaskInformation() {
         <Grid xs={6}>
           <Autocomplete
             placeholder="Status"
-            freeSolo
             value={status}
             onChange={(e, newValue) => setStatus(newValue)}
             options={["Todo", "Doing", "Done"]}
