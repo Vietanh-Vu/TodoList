@@ -6,8 +6,6 @@ export default function TableBody() {
   const { rows, searchedRows, isLoading } = useTask();
   const { page, rowsPerPage, emptyRows, renderTasks } = useTableTask();
 
-  console.log(rows);
-
   return (
     <tbody>
       {isLoading === true && (
