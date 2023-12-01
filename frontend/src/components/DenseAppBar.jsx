@@ -19,7 +19,7 @@ export default function DenseAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" component="div">
-            TodoApp
+            TodoList
           </Typography>
         </Toolbar>
       </AppBar>
