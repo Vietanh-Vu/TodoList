@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useState, useContext } from "react";
 
-const BASE_URL = "https://8794-116-96-45-139.ngrok-free.app/api/task";
+const BASE_URL = "https://fa51-116-96-45-139.ngrok-free.app/api/task";
 // const BASE_URL = "http://localhost:8080/api/task";
 
 // Set default headers for all axios requests
