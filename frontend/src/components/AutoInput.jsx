@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { AutocompleteOption, ListItemContent } from "@mui/joy";
 
-const BASE_URL = "https://f99c-116-96-46-32.ngrok-free.app/api/trie";
+const BASE_URL = "https://8794-116-96-45-139.ngrok-free.app/api/trie";
 // const BASE_URL = "http://localhost:8080/api/trie";
 
 export default function AutoInput(props) {

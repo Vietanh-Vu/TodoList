@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-@CrossOrigin(origins = "https://vietanh-vu.github.io/")
-//@CrossOrigin("http://localhost:5173/")
+//@CrossOrigin(origins = "https://vietanh-vu.github.io/")
+@CrossOrigin("http://localhost:5173/")
 @RestController
 @RequestMapping("/api")
 public class TaskController {
